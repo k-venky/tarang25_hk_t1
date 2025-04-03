@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Wellness Hub</title>
+    <link rel="stylesheet" href="health.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Wellness Hub Section -->
+        <div class="wellness-hub-container" id="wellnessHubContainer">
+            <h1>Student Wellness Hub</h1>
+            <div class="user-profile">
+                <h3>Welcome, <span id="displayName"></span>!</h3>
+                <p>Stress Level: <span id="displayStress"></span></p>
+            </div>
+            
+            <div class="tab-buttons">
+                <button onclick="showTab('counselling')">Counselling</button>
+                <button onclick="showTab('exercises')">Exercises</button>
+                <button onclick="showTab('tracking')">Tracking</button>
+                <button onclick="showTab('resources')">Resources</button>
+            </div>
+            
+            <div id="counselling" class="tab-content active">
+                <h2>Personal Counselling</h2>
+                <p>Schedule a session with a counselor to discuss your stress and mental health.</p>
+                <div class="counselor-options">
+                    <div class="option">
+                        <h3>School Counselor</h3>
+                        <p>Available Monday-Friday, 9am-3pm</p>
+                        <button onclick="window.location.href='booking.html'">Book Session</button>
+                    </div>
+                    <div class="option">
+                        <h3>External Support</h3>
+                        <p>24/7 helpline for immediate support</p>
+                        <button>Call Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="exercises" class="tab-content">
+                <h2>Stress Relief Exercises</h2>
+                <p>Try these guided exercises to reduce your stress:</p>
+                <div class="exercise-options">
+                    <div class="option">
+                        <h3>Deep Breathing</h3>
+                        <p>5-minute guided breathing exercise</p>
+                        <button onclick="startExercise('Deep Breathing')">Start Exercise</button>
+                    </div>
+                    <div class="option">
+                        <h3>Progressive Relaxation</h3>
+                        <p>10-minute muscle relaxation</p>
+                        <button onclick="startExercise('Progressive Relaxation')">Start Exercise</button>
+                    </div>
+                </div>
+                <!-- Exercise container will be added here dynamically -->
+            </div>
+            
+            <div id="tracking" class="tab-content">
+                <h2>Mental Health Tracking</h2>
+                <p>Track your mood and mental health progress over time.</p>
+                <div class="tracking-container">
+                    <div class="mood-tracker">
+                        <h3>Today's Mood</h3>
+                        <div class="mood-options">
+                            <span>😊</span>
+                            <span>😐</span>
+                            <span>😞</span>
+                        </div>
+                    </div>
+                    <div class="stress-log">
+                        <h3>Stress Journal</h3>
+                        <textarea placeholder="How are you feeling today?"></textarea>
+                        <button>Save Entry</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="resources" class="tab-content">
+                <h2>Resources</h2>
+                <p>Explore articles, helplines, and support groups:</p>
+                <div class="resource-links">
+                    <a href="https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/stress-relievers/art-20047257" class="resource">Stress Management Tips</a>
+                    <a href="https://www.oxfordlearning.com/the-complete-guide-to-study-skills/" class="resource">Study Skills Guide</a>
+                    <a href="https://findahelpline.com/countries/in/ap" class="resource">Crisis Helplines</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6999016/" class="resource">Peer Support Groups</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="health.js"></script>
+</body>
+</html>

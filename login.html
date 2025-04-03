@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Wellness Hub</title>
+    <link rel="stylesheet" href="health.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Welcome to Student Wellness Hub</h1>
+            <h2>Please Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="button" onclick="login()">Login</button>
+              
+            </form>
+        </div>
+    </div>
+    <script>
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
+            }
+            
+            // Simple validation - in a real app you would check against a database
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters');
+                return;
+            }
+            
+            // Store login status (in a real app you'd use proper authentication)
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Redirect to user details page
+            window.location.href = 'details.html';
+        }
+    </script>
+</body>
+</html>

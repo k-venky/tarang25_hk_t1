@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details - Student Wellness Hub</title>
+    <link rel="stylesheet" href="health.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- User Information Section -->
+        <div class="user-info-container" id="userInfoContainer">
+            <h2>Tell Us About Yourself</h2>
+            <form id="userForm">
+                <div class="step active" id="step1">
+                    <label for="name">Enter Your Name:</label>
+                    <input type="text" id="name" required>
+                    <div class="button-group">
+                        <button type="button" onclick="nextStep(1)">Next</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step2">
+                    <label for="age">Enter Your Age:</label>
+                    <input type="number" id="age" required>
+                    <div class="button-group">
+                        <button type="button" class="secondary" onclick="prevStep(1)">Back</button>
+                        <button type="button" onclick="nextStep(2)">Next</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step3">
+                    <label for="class">Class of Study:</label>
+                    <input type="text" id="class" required>
+                    <div class="button-group">
+                        <button type="button" class="secondary" onclick="prevStep(2)">Back</button>
+                        <button type="button" onclick="nextStep(3)">Next</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step4">
+                    <label for="stress">Stress Level:</label>
+                    <select id="stress">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    <div class="button-group">
+                        <button type="button" class="secondary" onclick="prevStep(3)">Back</button>
+                        <button type="button" onclick="nextStep(4)">Next</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step5">
+                    <label for="parentsAware">Do your parents know about your stress?</label>
+                    <select id="parentsAware">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <div class="button-group">
+                        <button type="button" class="secondary" onclick="prevStep(4)">Back</button>
+                        <button type="button" onclick="submitForm()">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        let currentStep = 1;
+        let userData = {};
+
+        function nextStep(step) {
+            if (step === 1 && !document.getElementById('name').value) {
+                alert('Please enter your name');
+                return;
+            }
+            if (step === 2 && !document.getElementById('age').value) {
+                alert('Please enter your age');
+                return;
+            }
+            if (step === 3 && !document.getElementById('class').value) {
+                alert('Please enter your class');
+                return;
+            }
+
+            document.getElementById(`step${step}`).classList.remove('active');
+            document.getElementById(`step${step + 1}`).classList.add('active');
+            currentStep++;
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step${step}`).classList.remove('active');
+            document.getElementById(`step${step - 1}`).classList.add('active');
+            currentStep--;
+        }
+
+        function submitForm() {
+            userData = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                classStudy: document.getElementById('class').value,
+                stressLevel: document.getElementById('stress').value,
+                parentsAware: document.getElementById('parentsAware').value
+            };
+
+            if (!userData.name || !userData.age || !userData.classStudy) {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            // Store user data
+            localStorage.setItem('wellnessUserData', JSON.stringify(userData));
+            
+            // Redirect to main wellness hub
+            window.location.href = 'health.html';
+        }
+    </script>
+</body>
+</html>
